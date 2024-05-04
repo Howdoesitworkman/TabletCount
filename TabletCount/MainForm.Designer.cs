@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            drugOne = new Label();
-            drugTwo = new Label();
-            drugThree = new Label();
+            drugOneLabel = new Label();
+            drugTwoLabel = new Label();
+            drugThreeLabel = new Label();
             drugOneCount = new Label();
             drugTwoCount = new Label();
             drugThreeCount = new Label();
@@ -39,61 +39,68 @@
             drugThreeIncre = new Button();
             resetButton = new Button();
             exitButton = new Button();
+            logButton = new Button();
             SuspendLayout();
             // 
-            // drugOne
+            // drugOneLabel
             // 
-            drugOne.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugOne.Location = new Point(91, 81);
-            drugOne.Name = "drugOne";
-            drugOne.Size = new Size(129, 29);
-            drugOne.TabIndex = 0;
-            drugOne.Text = "label1";
+            drugOneLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            drugOneLabel.Location = new Point(53, 81);
+            drugOneLabel.Name = "drugOneLabel";
+            drugOneLabel.Size = new Size(129, 29);
+            drugOneLabel.TabIndex = 0;
+            drugOneLabel.Text = "Acetaminophen";
+            drugOneLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // drugTwo
+            // drugTwoLabel
             // 
-            drugTwo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugTwo.Location = new Point(323, 81);
-            drugTwo.Name = "drugTwo";
-            drugTwo.Size = new Size(129, 29);
-            drugTwo.TabIndex = 1;
-            drugTwo.Text = "label2";
+            drugTwoLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            drugTwoLabel.Location = new Point(285, 81);
+            drugTwoLabel.Name = "drugTwoLabel";
+            drugTwoLabel.Size = new Size(129, 29);
+            drugTwoLabel.TabIndex = 1;
+            drugTwoLabel.Text = "Oxycotin";
+            drugTwoLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // drugThree
+            // drugThreeLabel
             // 
-            drugThree.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugThree.Location = new Point(555, 81);
-            drugThree.Name = "drugThree";
-            drugThree.Size = new Size(129, 29);
-            drugThree.TabIndex = 2;
-            drugThree.Text = "label3";
+            drugThreeLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            drugThreeLabel.Location = new Point(517, 81);
+            drugThreeLabel.Name = "drugThreeLabel";
+            drugThreeLabel.Size = new Size(129, 29);
+            drugThreeLabel.TabIndex = 2;
+            drugThreeLabel.Text = "Ibuprofen";
+            drugThreeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // drugOneCount
             // 
             drugOneCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugOneCount.Location = new Point(91, 149);
+            drugOneCount.Location = new Point(53, 146);
             drugOneCount.Name = "drugOneCount";
             drugOneCount.Size = new Size(129, 29);
             drugOneCount.TabIndex = 3;
             drugOneCount.Text = "count: ";
+            drugOneCount.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // drugTwoCount
             // 
             drugTwoCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugTwoCount.Location = new Point(323, 149);
+            drugTwoCount.Location = new Point(285, 146);
             drugTwoCount.Name = "drugTwoCount";
             drugTwoCount.Size = new Size(129, 29);
             drugTwoCount.TabIndex = 4;
             drugTwoCount.Text = "count: ";
+            drugTwoCount.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // drugThreeCount
             // 
             drugThreeCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugThreeCount.Location = new Point(555, 149);
+            drugThreeCount.Location = new Point(517, 146);
             drugThreeCount.Name = "drugThreeCount";
             drugThreeCount.Size = new Size(129, 29);
             drugThreeCount.TabIndex = 5;
             drugThreeCount.Text = "count: ";
+            drugThreeCount.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // drugOneIncre
             // 
@@ -104,6 +111,7 @@
             drugOneIncre.TabIndex = 6;
             drugOneIncre.Text = "increment";
             drugOneIncre.UseVisualStyleBackColor = true;
+            drugOneIncre.Click += drugOneIncre_Click;
             // 
             // drugTwoIncre
             // 
@@ -114,6 +122,7 @@
             drugTwoIncre.TabIndex = 7;
             drugTwoIncre.Text = "increment";
             drugTwoIncre.UseVisualStyleBackColor = true;
+            drugTwoIncre.Click += drugTwoIncre_Click;
             // 
             // drugThreeIncre
             // 
@@ -124,28 +133,44 @@
             drugThreeIncre.TabIndex = 8;
             drugThreeIncre.Text = "increment";
             drugThreeIncre.UseVisualStyleBackColor = true;
+            drugThreeIncre.Click += drugThreeIncre_Click;
             // 
             // resetButton
             // 
-            resetButton.Location = new Point(172, 325);
+            resetButton.BackColor = SystemColors.ActiveCaption;
+            resetButton.Location = new Point(96, 325);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(140, 50);
             resetButton.TabIndex = 9;
             resetButton.Text = "Reset";
-            resetButton.UseVisualStyleBackColor = true;
+            resetButton.UseVisualStyleBackColor = false;
+            resetButton.Click += resetButton_Click;
             // 
             // exitButton
             // 
-            exitButton.Location = new Point(397, 325);
+            exitButton.BackColor = SystemColors.ActiveCaption;
+            exitButton.Location = new Point(466, 325);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(140, 50);
             exitButton.TabIndex = 10;
             exitButton.Text = "Exit";
-            exitButton.UseVisualStyleBackColor = true;
+            exitButton.UseVisualStyleBackColor = false;
+            exitButton.Click += exitButton_Click;
+            // 
+            // logButton
+            // 
+            logButton.BackColor = SystemColors.ActiveCaption;
+            logButton.Location = new Point(281, 325);
+            logButton.Name = "logButton";
+            logButton.Size = new Size(140, 50);
+            logButton.TabIndex = 11;
+            logButton.Text = "Log File";
+            logButton.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
             ClientSize = new Size(806, 446);
+            Controls.Add(logButton);
             Controls.Add(exitButton);
             Controls.Add(resetButton);
             Controls.Add(drugThreeIncre);
@@ -154,18 +179,19 @@
             Controls.Add(drugThreeCount);
             Controls.Add(drugTwoCount);
             Controls.Add(drugOneCount);
-            Controls.Add(drugThree);
-            Controls.Add(drugTwo);
-            Controls.Add(drugOne);
+            Controls.Add(drugThreeLabel);
+            Controls.Add(drugTwoLabel);
+            Controls.Add(drugOneLabel);
             Name = "MainForm";
+            Load += MainForm_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Label drugOne;
-        private Label drugTwo;
-        private Label drugThree;
+        private Label drugOneLabel;
+        private Label drugTwoLabel;
+        private Label drugThreeLabel;
         private Label drugOneCount;
         private Label drugTwoCount;
         private Label drugThreeCount;
@@ -174,5 +200,6 @@
         private Button drugThreeIncre;
         private Button resetButton;
         private Button exitButton;
+        private Button logButton;
     }
 }

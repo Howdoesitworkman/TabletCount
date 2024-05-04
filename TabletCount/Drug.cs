@@ -8,7 +8,7 @@ namespace TabletCount
 {
     internal class Drug
     {
-        private string drugName;    // to implement OOP, I make the properties private
+        private string drugName;    // to implement Object-Oriented Porgramming, I make the properties private
         private int drugCount;
 
         public Drug(string name)
@@ -27,5 +27,14 @@ namespace TabletCount
             this.drugCount = 0;
         }
 
+        public string getName()
+        {
+            return this.drugName;
+        }
+
+        public int getCount()
+        {
+            return this.drugCount;
+        }
     }
 }
