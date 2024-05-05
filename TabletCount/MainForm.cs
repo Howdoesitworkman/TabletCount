@@ -10,7 +10,7 @@ namespace TabletCount
         private Drug drug1;
         private Drug drug2;
         private Drug drug3;
-    
+
         public MainForm()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace TabletCount
         private void drugOneIncre_Click(object sender, EventArgs e)
         {
             this.writer.Write($"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()} ");
-            this.writer.Write(drug1.getName()+" "+ drug1.getCount().ToString()+ " ");
+            this.writer.Write(drug1.getName() + " " + drug1.getCount().ToString() + " ");
             drug1.increment();
             this.writer.WriteLine(drug1.getCount().ToString());
             drugOneCount.Text = "count: " + drug1.getCount().ToString();
@@ -73,9 +73,9 @@ namespace TabletCount
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            this.writer.WriteLine($"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()} RESET");
-            this.writer.WriteLine(drug1.getName() + " " + drug1.getCount().ToString() + " 0");
-            this.writer.WriteLine(drug2.getName() + " " + drug2.getCount().ToString() + " 0");
+            this.writer.Write($"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()} RESET ");
+            this.writer.Write(drug1.getName() + " " + drug1.getCount().ToString() + " 0 ");
+            this.writer.Write(drug2.getName() + " " + drug2.getCount().ToString() + " 0 ");
             this.writer.WriteLine(drug3.getName() + " " + drug3.getCount().ToString() + " 0");
             drug1.reset();
             drug2.reset();
@@ -88,6 +88,14 @@ namespace TabletCount
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void logButton_Click(object sender, EventArgs e)
+        {
+            this.writer.Close();
+            LogForm myLogForm = new LogForm();
+            myLogForm.ShowDialog();
             this.Close();
         }
     }
