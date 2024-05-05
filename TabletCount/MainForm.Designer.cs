@@ -138,6 +138,7 @@
             // resetButton
             // 
             resetButton.BackColor = SystemColors.ActiveCaption;
+            resetButton.Font = new Font("Microsoft YaHei UI", 12F);
             resetButton.Location = new Point(96, 325);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(140, 50);
@@ -149,6 +150,7 @@
             // exitButton
             // 
             exitButton.BackColor = SystemColors.ActiveCaption;
+            exitButton.Font = new Font("Microsoft YaHei UI", 12F);
             exitButton.Location = new Point(466, 325);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(140, 50);
@@ -160,6 +162,7 @@
             // logButton
             // 
             logButton.BackColor = SystemColors.ActiveCaption;
+            logButton.Font = new Font("Microsoft YaHei UI", 12F);
             logButton.Location = new Point(281, 325);
             logButton.Name = "logButton";
             logButton.Size = new Size(140, 50);
