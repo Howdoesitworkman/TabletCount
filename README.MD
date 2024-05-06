@@ -4,8 +4,9 @@
 3. The users can also check the log to get infomation about each operation with the application.
 
 # How to run this application
-1. Download the project from the link of the project on GitHub
-2. Open the project folder in Visual Studio and click the "run" button (green).
+1. Download the project file from the link provided and unzip it.
+2. Open Visual Studio and click "open a project or solution". In the folder "TabletCount-master\TabletCount", open the C# project file named "TabletCount". 
+3. When the project is open, click the "run" button (green).
 
 # Note
 1. Each operation such as increment occupies one line in the log file.
