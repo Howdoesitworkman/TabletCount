@@ -25,8 +25,14 @@ namespace TabletCount
 
         private void LogForm_Load(object sender, EventArgs e)
         {
-            string logContent = File.ReadAllText("DrugIncrementTest.log");
-            richTextBoxLog.Text = logContent;
+            try
+            {
+                string logContent = File.ReadAllText("DrugIncrementTest.log");
+                richTextBoxLog.Text = logContent;
+            }
+            catch (Exception exp){ 
+                Console.WriteLine(exp.Message);
+            }
         }
     }
 }

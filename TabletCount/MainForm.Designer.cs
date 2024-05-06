@@ -44,7 +44,7 @@
             // 
             // drugOneLabel
             // 
-            drugOneLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            drugOneLabel.Font = new Font("Microsoft YaHei UI", 10F);
             drugOneLabel.Location = new Point(53, 81);
             drugOneLabel.Name = "drugOneLabel";
             drugOneLabel.Size = new Size(129, 29);
@@ -54,8 +54,8 @@
             // 
             // drugTwoLabel
             // 
-            drugTwoLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugTwoLabel.Location = new Point(285, 81);
+            drugTwoLabel.Font = new Font("Microsoft YaHei UI", 10F);
+            drugTwoLabel.Location = new Point(53, 146);
             drugTwoLabel.Name = "drugTwoLabel";
             drugTwoLabel.Size = new Size(129, 29);
             drugTwoLabel.TabIndex = 1;
@@ -64,8 +64,8 @@
             // 
             // drugThreeLabel
             // 
-            drugThreeLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugThreeLabel.Location = new Point(517, 81);
+            drugThreeLabel.Font = new Font("Microsoft YaHei UI", 10F);
+            drugThreeLabel.Location = new Point(53, 211);
             drugThreeLabel.Name = "drugThreeLabel";
             drugThreeLabel.Size = new Size(129, 29);
             drugThreeLabel.TabIndex = 2;
@@ -74,8 +74,8 @@
             // 
             // drugOneCount
             // 
-            drugOneCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugOneCount.Location = new Point(53, 146);
+            drugOneCount.Font = new Font("Microsoft YaHei UI", 10F);
+            drugOneCount.Location = new Point(285, 81);
             drugOneCount.Name = "drugOneCount";
             drugOneCount.Size = new Size(129, 29);
             drugOneCount.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             // drugTwoCount
             // 
-            drugTwoCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            drugTwoCount.Font = new Font("Microsoft YaHei UI", 10F);
             drugTwoCount.Location = new Point(285, 146);
             drugTwoCount.Name = "drugTwoCount";
             drugTwoCount.Size = new Size(129, 29);
@@ -94,8 +94,8 @@
             // 
             // drugThreeCount
             // 
-            drugThreeCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            drugThreeCount.Location = new Point(517, 146);
+            drugThreeCount.Font = new Font("Microsoft YaHei UI", 10F);
+            drugThreeCount.Location = new Point(285, 211);
             drugThreeCount.Name = "drugThreeCount";
             drugThreeCount.Size = new Size(129, 29);
             drugThreeCount.TabIndex = 5;
@@ -105,7 +105,8 @@
             // drugOneIncre
             // 
             drugOneIncre.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            drugOneIncre.Location = new Point(69, 209);
+            drugOneIncre.Font = new Font("Microsoft YaHei UI", 10F);
+            drugOneIncre.Location = new Point(533, 75);
             drugOneIncre.Name = "drugOneIncre";
             drugOneIncre.Size = new Size(104, 40);
             drugOneIncre.TabIndex = 6;
@@ -116,7 +117,8 @@
             // drugTwoIncre
             // 
             drugTwoIncre.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            drugTwoIncre.Location = new Point(301, 209);
+            drugTwoIncre.Font = new Font("Microsoft YaHei UI", 10F);
+            drugTwoIncre.Location = new Point(533, 140);
             drugTwoIncre.Name = "drugTwoIncre";
             drugTwoIncre.Size = new Size(104, 40);
             drugTwoIncre.TabIndex = 7;
@@ -127,7 +129,8 @@
             // drugThreeIncre
             // 
             drugThreeIncre.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            drugThreeIncre.Location = new Point(533, 209);
+            drugThreeIncre.Font = new Font("Microsoft YaHei UI", 10F);
+            drugThreeIncre.Location = new Point(533, 205);
             drugThreeIncre.Name = "drugThreeIncre";
             drugThreeIncre.Size = new Size(104, 40);
             drugThreeIncre.TabIndex = 8;
@@ -139,7 +142,7 @@
             // 
             resetButton.BackColor = SystemColors.ActiveCaption;
             resetButton.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            resetButton.Location = new Point(96, 325);
+            resetButton.Location = new Point(634, 274);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(160, 50);
             resetButton.TabIndex = 9;
@@ -151,7 +154,7 @@
             // 
             exitButton.BackColor = SystemColors.ActiveCaption;
             exitButton.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            exitButton.Location = new Point(466, 325);
+            exitButton.Location = new Point(634, 384);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(160, 50);
             exitButton.TabIndex = 10;
@@ -162,18 +165,18 @@
             // logButton
             // 
             logButton.BackColor = SystemColors.ActiveCaption;
-            logButton.Font = new Font("Microsoft YaHei UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            logButton.Location = new Point(281, 325);
+            logButton.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Bold);
+            logButton.Location = new Point(634, 330);
             logButton.Name = "logButton";
             logButton.Size = new Size(160, 50);
             logButton.TabIndex = 11;
-            logButton.Text = "Check log and exit";
+            logButton.Text = "Check Log";
             logButton.UseVisualStyleBackColor = false;
             logButton.Click += logButton_Click;
             // 
             // MainForm
             // 
-            ClientSize = new Size(806, 446);
+            ClientSize = new Size(884, 459);
             Controls.Add(logButton);
             Controls.Add(exitButton);
             Controls.Add(resetButton);
