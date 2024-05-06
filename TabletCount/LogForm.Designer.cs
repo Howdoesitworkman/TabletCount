@@ -40,7 +40,7 @@
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(140, 50);
             exitButton.TabIndex = 0;
-            exitButton.Text = "Exit";
+            exitButton.Text = "Close";
             exitButton.UseVisualStyleBackColor = false;
             exitButton.Click += exitButton_Click;
             // 

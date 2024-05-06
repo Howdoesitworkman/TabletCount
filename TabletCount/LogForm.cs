@@ -25,6 +25,7 @@ namespace TabletCount
 
         private void LogForm_Load(object sender, EventArgs e)
         {
+            // this block is to deal with the exceptions such as "file doesn't exist"
             try
             {
                 string logContent = File.ReadAllText("DrugIncrementTest.log");
