@@ -5,7 +5,7 @@
 
 # How to run this application
 1. Download the project file from the link provided and unzip it.
-2. Open Visual Studio and click "open a project or solution". In the folder "TabletCount-master\TabletCount", open the C# project file named "TabletCount". 
+2. Open Visual Studio and click "open a project or solution". In the folder "TabletCount-master\TabletCount", open the file named "TabletCount.csproj" or the file named "TabletCount.sln". 
 3. When the project is open, click the "run" button (green).
 
 # Note
