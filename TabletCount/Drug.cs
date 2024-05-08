@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace TabletCount
 {
-    internal class Drug
+    public class Drug
     {
         private string drugName;    // to implement Object-Oriented Porgramming, I make the fields private
         private int drugCount;
-
         public Drug(string name)
         {
             this.drugName = name;
             this.drugCount = 0;
+            
         }
 
         public void Increment()
@@ -31,10 +31,10 @@ namespace TabletCount
         {
             return this.drugName;
         }
-
-        public int GetCount()
+        public int GetDrugCount()
         {
             return this.drugCount;
         }
+
     }
 }

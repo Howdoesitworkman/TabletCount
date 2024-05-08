@@ -7,18 +7,35 @@ namespace TabletCount
     {
         // to implement Object-Oriented Porgramming, I make the fields private
         private StreamWriter writer;
-        private Drug drug1;
-        private Drug drug2;
-        private Drug drug3;
-
-        public MainForm()
+        private List<Button> increButtons;
+        private List<Label> drugLabels;
+        private List<Label> drugCountLabels;
+        private List<Drug> drugsList;
+        private Button exitButton;
+        private Button checkLog;
+        private Button resetButton;
+        public MainForm(List<Drug> drugs)
         {
             InitializeComponent();
-            writer = new StreamWriter("DrugIncrementTest.log", false);     
-            drug1 = new Drug("Acetaminophen");
-            drug2 = new Drug("Oxycotin");
-            drug3 = new Drug("Ibuprofen");
-            this.InitLog();     // initialize the log file (eg, write the time and "SRART") 
+            writer = new StreamWriter("DrugIncrementTest.log", false);
+            increButtons = new List<Button>();
+            drugLabels = new List<Label>();
+            drugCountLabels = new List<Label>();
+            drugsList = new List<Drug>();
+            exitButton = new Button();
+            checkLog = new Button();
+            resetButton = new Button();
+
+            this.InitLog();     // initialize the log file (eg, write the time and "SRART")
+
+            for (int i = 0; i < drugs.Count; i++)
+            {
+                drugsList.Add(drugs[i]);
+                increButtons.Add(new Button());
+                drugLabels.Add(new Label());
+                drugCountLabels.Add(new Label());
+            }
+
         }
 
         //this method is to initialize a new log file
@@ -29,51 +46,21 @@ namespace TabletCount
             this.writer.Close();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        //In this method, we update the log file and increment of the count of one drug from the drug list
+        private void IncreButtonClick(object sender, EventArgs e)
         {
-            //assign the info of each drug to its corresponding label
-            drugOneLabel.Text = drug1.GetName();
-            drugTwoLabel.Text = drug2.GetName();
-            drugThreeLabel.Text = drug3.GetName();
-            drugOneCount.Text = "count: " + drug1.GetCount().ToString();
-            drugTwoCount.Text = "count: " + drug2.GetCount().ToString();
-            drugThreeCount.Text = "count: " + drug3.GetCount().ToString();
-        }
-
-        //In this method, we update the log file and increment of the count of drug1
-        private void drugOneIncre_Click(object sender, EventArgs e)
-        {
-            writer = new StreamWriter("DrugIncrementTest.log", true);
-            this.writer.Write($"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()} ");
-            this.writer.Write(drug1.GetName() + " " + drug1.GetCount().ToString() + " ");
-            drug1.Increment();
-            this.writer.WriteLine(drug1.GetCount().ToString());
-            drugOneCount.Text = "count: " + drug1.GetCount().ToString();
-            this.writer.Close();
-        }
-
-        //In this method, we update the log file and increment of the count of drug2
-        private void drugTwoIncre_Click(object sender, EventArgs e)
-        {
-            writer = new StreamWriter("DrugIncrementTest.log", true);
-            this.writer.Write($"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()} ");
-            this.writer.Write(drug2.GetName() + " " + drug2.GetCount().ToString() + " ");
-            drug2.Increment();
-            this.writer.WriteLine(drug2.GetCount().ToString());
-            drugTwoCount.Text = "count: " + drug2.GetCount().ToString();
-            this.writer.Close();
-        }
-
-        //In this method, we update the log file and increment of the count of drug3
-        private void drugThreeIncre_Click(object sender, EventArgs e)
-        {
-            writer = new StreamWriter("DrugIncrementTest.log", true);
-            this.writer.Write($"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()} ");
-            this.writer.Write(drug3.GetName() + " " + drug3.GetCount().ToString() + " ");
-            drug3.Increment();
-            this.writer.WriteLine(drug3.GetCount().ToString());
-            drugThreeCount.Text = "count: " + drug3.GetCount().ToString();
-            this.writer.Close();
+            Button button = sender as Button;
+            if (button != null)
+            {
+                writer = new StreamWriter("DrugIncrementTest.log", true);
+                this.writer.Write($"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()} ");
+                this.writer.Write(drugsList[button.TabIndex].GetName() + " " + drugsList[button.TabIndex].GetDrugCount().ToString() + " ");
+                drugsList[button.TabIndex].Increment();
+                this.writer.WriteLine(drugsList[button.TabIndex].GetDrugCount().ToString());
+                drugCountLabels[button.TabIndex].Text = "Count: " + drugsList[button.TabIndex].GetDrugCount().ToString();
+                this.writer.Close();
+            }
+            
         }
 
         //In this method, we update the log file and reset the counts of all drugs to be 0
@@ -81,30 +68,94 @@ namespace TabletCount
         {
             writer = new StreamWriter("DrugIncrementTest.log", true);
             this.writer.Write($"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()} RESET ");
-            this.writer.Write(drug1.GetName() + " " + drug1.GetCount().ToString() + " 0 ");
-            this.writer.Write(drug2.GetName() + " " + drug2.GetCount().ToString() + " 0 ");
-            this.writer.WriteLine(drug3.GetName() + " " + drug3.GetCount().ToString() + " 0");
-            drug1.Reset();
-            drug2.Reset();
-            drug3.Reset();
-            drugOneCount.Text = "count: " + drug1.GetCount().ToString();
-            drugTwoCount.Text = "count: " + drug2.GetCount().ToString();
-            drugThreeCount.Text = "count: " + drug3.GetCount().ToString();
+            for (int i = 0; i < drugCountLabels.Count; i++)
+            {
+                this.writer.Write(drugsList[i].GetName() + " " + drugsList[i].GetDrugCount().ToString() + " 0 ");
+                drugsList[i].Reset();
+                drugCountLabels[i].Text = "Count: " + drugsList[i].GetDrugCount().ToString();
+            }
+            this.writer.Write("\n");
             this.writer.Close();
         }
-
+        
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         //when we click "Check Log" button, a modal and seperate form displaying log content is opened
-        private void logButton_Click(object sender, EventArgs e)
+        private void checkLog_Click(object sender, EventArgs e)
         {
             LogForm myLogForm = new LogForm();
             myLogForm.ShowDialog();
         }
 
-       
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //Set up the form.
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.BackColor = Color.White;
+            this.ForeColor = Color.Black;
+            this.Size = new Size(800, 500);
+            this.Text = "Tablet";
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
+            for (int i = 0; i < drugsList.Count; i++)
+            {   
+                //this block is to create increButtons for each drug
+                increButtons[i].Text = "Increment";
+                increButtons[i].Location = new Point(600, 50+80*i);
+                increButtons[i].Size = new Size(100, 40);
+                increButtons[i].BackColor = Color.LightGray;
+                increButtons[i].TextAlign = ContentAlignment.MiddleCenter;
+                increButtons[i].TabIndex = i;       // TabIndex has the index of the button, which is also the index of the drug
+                increButtons[i].Click += new EventHandler(IncreButtonClick);
+                this.Controls.Add(increButtons[i]);
+
+                //this block is to create labels for each drug name
+                drugLabels[i].Text = drugsList[i].GetName();
+                drugLabels[i].Location = new Point(100, 60+80*i);
+                drugLabels[i].Size = new Size(150, 40);
+                this.Controls.Add(drugLabels[i]);
+
+                //this block is to create labels for each drug count
+                drugCountLabels[i].Text = "Count: " + drugsList[i].GetDrugCount().ToString();
+                drugCountLabels[i].Location = new Point(350, 60 + 80 * i);
+                drugCountLabels[i].Size = new Size(150, 40);
+                this.Controls.Add(drugCountLabels[i]);
+
+            }
+            //this block is to add the reset button
+            resetButton.Text = "Reset";
+            resetButton.Font = new Font("Arial", 12, FontStyle.Bold);
+            resetButton.Location = new Point(310, 40 + 60 * (drugsList.Count + 1));
+            resetButton.BackColor = Color.LightBlue;
+            resetButton.TextAlign = ContentAlignment.MiddleCenter;
+            resetButton.Size = new Size(150, 40);
+            resetButton.Click += new EventHandler(resetButton_Click);
+            this.Controls.Add(resetButton);
+
+            //this block is to add the button to check the log file
+            checkLog.Text = "Check Log";
+            checkLog.Font = new Font("Arial", 12, FontStyle.Bold);
+            checkLog.Location = new Point(310, 40 + 60 * (drugsList.Count + 2));
+            checkLog.BackColor = Color.LightBlue;
+            checkLog.TextAlign = ContentAlignment.MiddleCenter;
+            checkLog.Size = new Size(150, 40);
+            checkLog.Click += new EventHandler(checkLog_Click);
+            this.Controls.Add(checkLog);
+
+            //this block is to add the exit button
+            exitButton.Text = "Exit";
+            exitButton.Font = new Font("Arial", 12, FontStyle.Bold);
+            exitButton.Location = new Point(310, 40 + 60 * (drugsList.Count + 3));
+            exitButton.BackColor = Color.LightBlue;
+            exitButton.TextAlign = ContentAlignment.MiddleCenter;
+            exitButton.Size = new Size(150, 40);
+            exitButton.Click += new EventHandler(exitButton_Click);
+            this.Controls.Add(exitButton);
+        }
     }
 }
