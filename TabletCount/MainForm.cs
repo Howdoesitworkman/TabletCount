@@ -7,9 +7,6 @@ namespace TabletCount
     {
         // to implement Object-Oriented Porgramming, I make the fields private
         private StreamWriter writer;
-        private List<Button> increButtons;
-        private List<Label> drugLabels;
-        private List<Label> drugCountLabels;
         private List<Drug> drugsList;
         private Button exitButton;
         private Button checkLog;
@@ -18,9 +15,6 @@ namespace TabletCount
         {
             InitializeComponent();
             writer = new StreamWriter("DrugIncrementTest.log", false);
-            increButtons = new List<Button>();
-            drugLabels = new List<Label>();
-            drugCountLabels = new List<Label>();
             drugsList = new List<Drug>();
             exitButton = new Button();
             checkLog = new Button();
@@ -31,9 +25,6 @@ namespace TabletCount
             for (int i = 0; i < drugs.Count; i++)
             {
                 drugsList.Add(drugs[i]);
-                increButtons.Add(new Button());
-                drugLabels.Add(new Label());
-                drugCountLabels.Add(new Label());
             }
 
         }
@@ -57,7 +48,7 @@ namespace TabletCount
                 this.writer.Write(drugsList[button.TabIndex].GetName() + " " + drugsList[button.TabIndex].GetDrugCount().ToString() + " ");
                 drugsList[button.TabIndex].Increment();
                 this.writer.WriteLine(drugsList[button.TabIndex].GetDrugCount().ToString());
-                drugCountLabels[button.TabIndex].Text = "Count: " + drugsList[button.TabIndex].GetDrugCount().ToString();
+                drugsList[button.TabIndex].GetDrugCountLabel().Text = "Count: " + drugsList[button.TabIndex].GetDrugCount().ToString();
                 this.writer.Close();
             }
             
@@ -68,11 +59,11 @@ namespace TabletCount
         {
             writer = new StreamWriter("DrugIncrementTest.log", true);
             this.writer.Write($"{DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()} RESET ");
-            for (int i = 0; i < drugCountLabels.Count; i++)
+            for (int i = 0; i < drugsList.Count; i++)
             {
                 this.writer.Write(drugsList[i].GetName() + " " + drugsList[i].GetDrugCount().ToString() + " 0 ");
                 drugsList[i].Reset();
-                drugCountLabels[i].Text = "Count: " + drugsList[i].GetDrugCount().ToString();
+                drugsList[i].GetDrugCountLabel().Text = "Count: " + drugsList[i].GetDrugCount().ToString();
             }
             this.writer.Write("\n");
             this.writer.Close();
@@ -103,28 +94,28 @@ namespace TabletCount
             this.StartPosition = FormStartPosition.CenterScreen;
             
             for (int i = 0; i < drugsList.Count; i++)
-            {   
-                //this block is to create increButtons for each drug
-                increButtons[i].Text = "Increment";
-                increButtons[i].Location = new Point(600, 50+80*i);
-                increButtons[i].Size = new Size(100, 40);
-                increButtons[i].BackColor = Color.LightGray;
-                increButtons[i].TextAlign = ContentAlignment.MiddleCenter;
-                increButtons[i].TabIndex = i;       // TabIndex has the index of the button, which is also the index of the drug
-                increButtons[i].Click += new EventHandler(IncreButtonClick);
-                this.Controls.Add(increButtons[i]);
+            {
+                //this block is to determine the location, tabindex and event of increment buttons for each drug
+                drugsList[i].GetIncreButton().Text = "Increment";
+                drugsList[i].GetIncreButton().Size = new Size(100, 40);
+                drugsList[i].GetIncreButton().BackColor = Color.LightGray;
+                drugsList[i].GetIncreButton().TextAlign = ContentAlignment.MiddleCenter;
+                drugsList[i].GetIncreButton().Location = new Point(600, 50+80*i);
+                drugsList[i].GetIncreButton().TabIndex = i;       // TabIndex has the index of the button, which is also the index of the drug
+                drugsList[i].GetIncreButton().Click += new EventHandler(IncreButtonClick);
+                this.Controls.Add(drugsList[i].GetIncreButton());
 
-                //this block is to create labels for each drug name
-                drugLabels[i].Text = drugsList[i].GetName();
-                drugLabels[i].Location = new Point(100, 60+80*i);
-                drugLabels[i].Size = new Size(150, 40);
-                this.Controls.Add(drugLabels[i]);
+                //this block is to determine the location of labels for each drug name
+                drugsList[i].GetDrugNameLabel().Size = new Size(150, 40);
+                drugsList[i].GetDrugNameLabel().Text = drugsList[i].GetName();
+                drugsList[i].GetDrugNameLabel().Location = new Point(100, 60+80*i);
+                this.Controls.Add(drugsList[i].GetDrugNameLabel());
 
-                //this block is to create labels for each drug count
-                drugCountLabels[i].Text = "Count: " + drugsList[i].GetDrugCount().ToString();
-                drugCountLabels[i].Location = new Point(350, 60 + 80 * i);
-                drugCountLabels[i].Size = new Size(150, 40);
-                this.Controls.Add(drugCountLabels[i]);
+                //this block is to determine the location of labels for each drug count
+                drugsList[i].GetDrugCountLabel().Size = new Size(150, 40);
+                drugsList[i].GetDrugCountLabel().Text = "Count: " + drugsList[i].GetDrugCount().ToString();
+                drugsList[i].GetDrugCountLabel().Location = new Point(350, 60 + 80 * i);                
+                this.Controls.Add(drugsList[i].GetDrugCountLabel());
 
             }
             //this block is to add the reset button
