@@ -1,6 +1,6 @@
 ﻿# About this application
 1. This application is built with Winforms and .Net 8.0. 
-2. The interface of the application allows users to increment and reset the counts of the three drugs.
+2. The interface of the application allows users to increment and reset the counts of the three drugs (or every element in the drug list).
 3. The users can also check the log to get infomation about each operation with the application.
 
 # How to run this application
@@ -11,3 +11,4 @@
 # Note
 1. Each operation such as increment occupies one line in the log file.
 2. The log form is modal. So if you want to get back to the main form, please close the log form.
+3. This application will create an increment button, two labels for each drug in the drug list.
